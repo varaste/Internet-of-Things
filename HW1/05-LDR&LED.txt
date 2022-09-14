@@ -1,0 +1,21 @@
+int LED_port=13;
+int LDR_port=A1;
+float LDR_val=0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(LED_port, OUTPUT);
+}
+
+void loop() {
+  LDR_val = (analogRead(LDR_port)/1023.0) * 100.0;
+  Serial.print("LDR intensity = ");
+  Serial.println(LDR_val);
+  
+  if (50.0 < LDR_val)
+    digitalWrite(LED_port, HIGH);
+  else
+    digitalWrite(LED_port, LOW);
+    
+  delay(100);
+}
